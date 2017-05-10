@@ -1,23 +1,3 @@
-#
-# DO NOT DELETE THESE LINES!
-#
-# Your AMI ID is:
-#
-#     ami-2df66d3b
-#
-# Your subnet ID is:
-#
-#     subnet-fe40a9a4
-#
-# Your security group ID is:
-#
-#     sg-4cc10432
-#
-# Your Identity is:
-#
-#     testing-hawk
-#
-
 provider "aws" {
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
@@ -26,14 +6,14 @@ provider "aws" {
 
 resource "aws_instance" "web" {
   count                  = "${var.num_webs}"
-  ami                    = "ami-2df66d3b"
+  ami                    = "ami-da4c29ba"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = ["sg-4cc10432"]
-  subnet_id              = "subnet-fe40a9a4"
+  vpc_security_group_ids = ["sg-f13c508a"]
+  subnet_id              = "subnet-5ba79c3f"
+  key_name               = "fogops-supportfog"
 
   tags {
-    Identity    = "testing-hawk"
-    CostCenter  = "hashicorp"
+    CostCenter  = "ryan@foghornconsulting.com"
     Environment = "hashitraining"
     Name        = "web ${count.index + 1}/${var.num_webs}"
   }
@@ -46,7 +26,7 @@ terraform {
 }
 
 variable "aws_region" {
-  default = "us-east-1"
+  default = "us-west-2"
 }
 
 variable "aws_access_key" {}
@@ -54,7 +34,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
 variable "num_webs" {
-  default = 3
+  default = 1
 }
 
 output "public_ip" {
