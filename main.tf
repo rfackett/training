@@ -18,6 +18,9 @@ resource "aws_instance" "web" {
     Name        = "web ${count.index + 1}/${var.num_webs}"
   }
 }
+resource "garbage" "garbage"{
+  garbage = garbage
+  }
 
 terraform {
   backend "atlas" {
