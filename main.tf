@@ -34,7 +34,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
 variable "num_webs" {
-  default = 1
+  default = 3
 }
 
 output "public_ip" {
